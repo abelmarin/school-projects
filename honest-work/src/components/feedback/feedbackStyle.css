@@ -1,0 +1,96 @@
+.feedback-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.feedback-component-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 80%;
+    border: solid black 2px;
+    padding: 5px;
+    text-align: center;
+}
+
+/* Style for Add Feedback button  */
+.add-feedback {
+    border: solid black 2px;
+    border-radius: 20px;
+    background-color: white;
+    width: 7rem;
+    height: 6.5rem;
+    text-align: center;
+    margin-left: 0;
+}
+
+.add-feedback-btn {
+    width: 4.5rem;
+    height: auto;
+}
+
+.add-feedback:hover {
+    background-color: #ECECEC;
+}
+
+/* Style for the feedback form */
+.formStyle {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    height: 20vh;
+}
+
+.subjectStyle {
+    width: 40rem;
+    height: 3rem;
+    font-size: 2rem;
+    padding: 0 .5rem;
+}
+
+.feedbackStyle {
+    width: 40rem;
+    height: 15rem;
+    font-size: 1.4rem;
+    padding: 0 .5rem;
+    resize: none;
+}
+
+.labelStyle {
+    font-size: 1.7rem;
+}
+
+.submitStyle {
+    font-size: 1.3rem;
+    padding: .6rem 1rem;
+    margin-bottom: 3rem;
+}
+
+.formStyle .submitStyle {
+    text-align: center;
+}
+
+/* Styles for the leaderboard */
+.headerStyle {
+    padding-left: 0px;
+    text-align: center;
+}
+
+table {
+    width: 80%;
+    font-size: 2rem;
+    margin: auto;
+}
+
+table th {
+      border: 3px solid black;
+}
+
+th {
+    padding: 15px;
+}

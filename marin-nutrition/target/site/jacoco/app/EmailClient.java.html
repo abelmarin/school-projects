@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EmailClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">marin-nutrition</a> &gt; <a href="index.source.html" class="el_package">app</a> &gt; <span class="el_source">EmailClient.java</span></div><h1>EmailClient.java</h1><pre class="source lang-java linenums">package app;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
+
+
+// I wont have any tests for this class specifically since
+// this class only has one function, which is to send an email
+// and this will be used and tested in progressReport.
+
+<span class="fc" id="L13">public class EmailClient {</span>
+    // This is the password for my depaul provided email which I only use for school.
+    // I don't mind if you use it for this project but if you feel uncomfortable accessing
+    // this address then you can just switch it out with your own.
+    private static final String senderEmail = &quot;amarin13@mail.depaul.edu&quot;;
+    private static final String senderPassword = &quot;Taco!oco14&quot;;
+
+    public static void sendEmail(String to, String title, String outputString) throws MessagingException {
+<span class="fc" id="L21">        System.out.println(&quot;Sending email to &quot; + to);</span>
+
+<span class="fc" id="L23">        Session session = createSession();</span>
+
+        // Create message using session
+<span class="fc" id="L26">        MimeMessage message = new MimeMessage(session);</span>
+<span class="fc" id="L27">        prepareEmailMessage(message, to, title, outputString);</span>
+
+        // Sending message
+<span class="nc" id="L30">        Transport.send(message);</span>
+<span class="nc" id="L31">        System.out.println(&quot;Done&quot;);</span>
+<span class="nc" id="L32">    }</span>
+
+    private static void prepareEmailMessage(MimeMessage message, String to, String title, String outputString) throws MessagingException {
+<span class="fc" id="L35">        message.setContent(outputString, &quot;text/html; charset=utf-8&quot;);</span>
+<span class="fc" id="L36">        message.setFrom(new InternetAddress(senderEmail));</span>
+<span class="fc" id="L37">        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));</span>
+<span class="fc" id="L38">        message.setSubject(title);</span>
+<span class="fc" id="L39">    }</span>
+
+    private static Session createSession() {
+<span class="fc" id="L42">        Properties props = new Properties();</span>
+<span class="fc" id="L43">        props.put(&quot;mail.smtp.auth&quot;, &quot;true&quot;);//Outgoing server requires authentication</span>
+<span class="fc" id="L44">        props.put(&quot;mail.smtp.starttls.enable&quot;, &quot;true&quot;);//TLS must be activated</span>
+<span class="fc" id="L45">        props.put(&quot;mail.smtp.host&quot;, &quot;smtp.1and1.com&quot;); //Outgoing server (SMTP) - change it to your SMTP server</span>
+<span class="fc" id="L46">        props.put(&quot;mail.smtp.port&quot;, &quot;587&quot;);//Outgoing port</span>
+
+<span class="fc" id="L48">        Session session = Session.getInstance(props, new javax.mail.Authenticator() {</span>
+            protected PasswordAuthentication getPasswordAuthentication() {
+<span class="fc" id="L50">                return new PasswordAuthentication(senderEmail, senderPassword);</span>
+            }
+        });
+<span class="fc" id="L53">        return session;</span>
+    }
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

@@ -1,0 +1,21 @@
+.crossStyle {
+    width: 3rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2rem;
+}
+
+.settingsContainer h1, a {
+    padding-left: 2rem;
+    text-decoration: none;
+    color: black;
+}
+
+.settingsContainer h1:visited, a:visited {
+    color: black;
+}
+
+.deleteStyle, .deleteStyle:visited {
+    color: red;
+}

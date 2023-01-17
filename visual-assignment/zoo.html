@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Visual Assignment</title>
+<link rel = "icon" type = "image/png" href = "pics/african-2835156_960_720.png">
+<link rel = "apple-touch-icon" type = "image/png" href = "pics/african-2835156_960_720.png"/>
+<meta charset="UTF-8">
+<meta name="author" content="Abel Marin Jr">
+<meta name="viewpoint" content="width=device=width, initial-scale=1">
+<link href="animal.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+  <header>
+    <h1>Animal Captivity</h1>
+  </header>
+
+  <nav>
+    <a href="index.html" title="Home"><i class="fa fa-home"></i></a>
+    <a href="pets.html" title="Pets">Pets</a>
+    <a href="farm.html" title="Farm Animals">Livestock</a>
+    <a href="zoo.html" title="Zoo Animals">Zoo Animals</a>
+  </nav>
+
+  <div class="bod">
+    <h1>Treatment of Zoo Animals</h1>
+    <p>Zoo animals are animals which were never domesticated but were instead caught in the wild
+    and kept in cages for the entertainment of humans. I went to the Lincoln Park Zoo in order
+    to take some pictures of these animals. Here is a picture of a gorilla sitting bored in a cage and
+    an eagle sitting on the ground. These small boxes are clearly not the natural habitats of the animals.</p>
+    <div class="slideshow-container">
+      <div class="slides">
+        <img src="pics/IMG_1123.JPG" alt="Gorilla">
+      </div>
+      <div class="slides">
+        <img src="pics/IMG_1050.JPG" alt="Eagle">
+      </div>
+      <div class="slides">
+        <img src="pics/IMG_1082.JPG" alt="Giraffe">
+      </div>
+      <div class="slides">
+        <img src="pics/IMG_1066.JPG" alt="Hippo">
+      </div>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <h2>Animals of the Lincoln Park Zoo.<br>-Abel Marin</h2>
+    <p>Of course these wild animals have to be caught in order to be put on display. This can cause great distress
+    to the animal. This is best shown by seeing the capturing of a wild animal in action. The documentary Blackfish
+    provides a vivid account of a group orcas being rounded up and having their children taken from them.</p>
+    <div align="center">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/-zXMxBtBPJo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <h2>Clip from the documentary Blackfish</h2>
+  </div>
+
+  <script>
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("slides");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+  }
+  </script>
+
+  <footer>
+    <a>An Abel Marin Production</a>
+    <a href="https://depaul.digication.com/abel-marin-104-portfolio" title="Abe's Digication Portfolio" target="_blank">Digication Portfolio</a>
+  </footer>
+
+</body>
+</html>

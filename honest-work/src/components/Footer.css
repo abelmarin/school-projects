@@ -1,0 +1,23 @@
+.main-footer {
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    padding-top: 3em;
+    padding-left: 5em;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    text-align: left;
+}
+
+.col {
+    float: left;
+    width: 33.33%;
+}
+  
+  /* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+
+}

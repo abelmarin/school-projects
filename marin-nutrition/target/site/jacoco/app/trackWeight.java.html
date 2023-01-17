@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TrackWeight.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">marin-nutrition</a> &gt; <a href="index.source.html" class="el_package">app</a> &gt; <span class="el_source">TrackWeight.java</span></div><h1>TrackWeight.java</h1><pre class="source lang-java linenums">package app;
+
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
+import com.opencsv.exceptions.CsvException;
+import com.opencsv.exceptions.CsvValidationException;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.FileReader;
+
+<span class="fc" id="L12">public class TrackWeight {</span>
+
+    // This csv file will store the unit of measurements (imperial/metric)
+    // and the height and weight in the order unit,weight
+<span class="fc" id="L16">    static File filePath = new File(&quot;src/main/resources/measurements.csv&quot;);</span>
+
+    // Take the height and weight of the user and the unit of measurement they will be using
+    // Does not allow weight below 0
+    // Does not allow weights above 600 lbs or 275 kg
+    public void recordWeight(String unit, float weight) throws IOException {
+        // Checks to see if unit is valid
+<span class="fc bfc" id="L23" title="All 4 branches covered.">        if (!unit.equals(&quot;imperial&quot;)  &amp;&amp; !unit.equals(&quot;metric&quot;))</span>
+<span class="fc" id="L24">            throw new IllegalArgumentException(&quot;Unit not valid.&quot;);</span>
+
+        // Checks to see if weight is valid
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (weight &lt; 0)</span>
+<span class="fc" id="L28">            throw new IllegalArgumentException(&quot;Weight not valid.&quot;);</span>
+<span class="fc bfc" id="L29" title="All 4 branches covered.">        else if (unit.equals(&quot;metric&quot;) &amp;&amp; weight &gt; 275)</span>
+<span class="fc" id="L30">            throw new IllegalArgumentException(&quot;Weight not valid.&quot;);</span>
+<span class="fc bfc" id="L31" title="All 4 branches covered.">        else if (unit.equals(&quot;imperial&quot;) &amp;&amp; weight &gt; 600)</span>
+<span class="fc" id="L32">            throw new IllegalArgumentException(&quot;Weight not valid.&quot;);</span>
+
+        try {
+            //FileWriter outputFile = ;
+<span class="fc" id="L36">            CSVWriter writer = new CSVWriter(new FileWriter(filePath));</span>
+
+<span class="fc" id="L38">            String weightString = Float.toString(weight);</span>
+
+<span class="fc" id="L40">            String[] measurements = {unit, weightString};</span>
+<span class="fc" id="L41">            writer.writeNext(measurements);</span>
+
+<span class="fc" id="L43">            writer.close();</span>
+
+<span class="nc" id="L45">        } catch (IOException e) {</span>
+<span class="nc" id="L46">            System.out.println(&quot;There was an issue with recording your weight.&quot;);</span>
+<span class="fc" id="L47">        }</span>
+<span class="fc" id="L48">    }</span>
+
+    public String returnWeight() {
+        // Read the weight and unit from measurements.csv
+<span class="fc" id="L52">        String weightString = &quot;&quot;;</span>
+<span class="fc" id="L53">        String[] records = {};</span>
+        try {
+<span class="fc" id="L55">            CSVReader reader = new CSVReader(new FileReader(filePath));</span>
+<span class="fc" id="L56">            records = reader.readNext();</span>
+<span class="pc" id="L57">        } catch (IOException | CsvValidationException e) {}</span>
+
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (records[0].equals(&quot;imperial&quot;))</span>
+<span class="fc" id="L60">            weightString = records[1] + &quot; pounds.&quot;;</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        else if (records[0].equals(&quot;metric&quot;))</span>
+<span class="fc" id="L62">            weightString = records[1] + &quot; kilos.&quot;;</span>
+        else
+<span class="fc" id="L64">            throw new IllegalArgumentException(&quot;There is no recorded weight.&quot;);</span>
+
+        // Returns the output string
+<span class="fc" id="L67">        return weightString;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

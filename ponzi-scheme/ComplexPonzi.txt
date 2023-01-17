@@ -1,0 +1,35 @@
+I took the code from SimplePonzi and added 3 functions plus several instance variables.
+The new functions are withdraw, addToInvestment, alreadyInvestor, returnBalance.
+The new variables are owner which stores the owner of the contract, a mapping accountBalances which
+stores the amount invested by each address, and the counters withdrawCounter.
+
+The function withdraw allows an already existing user to take out the principal from the ponzi scheme.
+This function also checks to see if the number of total calls to withdraw is greater than or equal to 2 (I chose this number for testing purposes).
+If this is true then this is a clear indication that the ponzi scheme is collapsing. Thus in order to prevent 
+the owner of the contract from getting burned, the function will send the entire balance of the contract to the owner. The owner 
+of the contract would immediatly get the entire balance of the contract and concievbly buy a plane ticket to Mexico.
+Thus withdraw serves a dual purpose: first, to let users take their money out when they decide to terminate their investments and
+secondly, to provide a way for the creator of the ponzi scheme to figure out if the scheme is collapsing in which case he/she would
+get all the ether stored in the contract and run away with it.
+
+The addToInvestment function allows already existing users to increase the amount they have in their account.
+
+The alreadyInvestor function simply returns if a prospective investor is already an investor. It returns a boolean value.
+
+The returnBalance function simply returns the balance of the investor. Returns 0 if they are not investors.
+
+I have both an array storing the addresses of users and a mapping storing the addresses of users as keys and their respective balances 
+as values. This is because solidity does not allow looping over a mapping; an act which I require for alreadyInvestor. Thus I have the array
+purely to loop over.
+
+Example:
+Alice calls the invest() function and sends .01 ether. She immediatly gets 10% of this back
+so the contract balance is .009 ether. Bob comes along later and also invests .01 ether.
+Both Alice and Bob spilt 10% of the contracts balance. So now the contract balance is .0171 ether.
+Next Caroline comes in and invests 1 ether. Alice, Bob, and Caroline each spilt 10% of the contracts balance.
+Now the contract balance is now .91539 ether. Diane invests 3 ether. Contract balance is now 3.523851 ether.
+Alice adds to her 1 ether to her investment. The contract balance is now 4.523851 ether. Ethan invests .01 ether.
+Following the pay out, the contract balance is now 4.0804659. Ethan then decides to withdraw his ether. The contract balance
+is now 4.0704659 and the withdrawCounter is now 1. Caroline decides to withdraw. The contract balance is now 3.0704659 and 
+withdrawCounter is now 2. Next Alice tries to withdraw but since withdraw counter is 2 the entire contract balance is sent to the
+owner of the contract.

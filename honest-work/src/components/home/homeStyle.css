@@ -1,0 +1,93 @@
+.header-style {
+    text-align: center;
+    margin: .8rem;
+}
+
+.project-component {
+    width: 12rem;
+    height: 8rem;
+    font-size: 1.6rem;
+    text-align: center;
+    background-color: #C4C4C4;
+    text-align: center;
+    padding: 0;
+    /* justify-content: center; */
+}
+
+.project-list {
+    list-style: none;
+    padding-left: 0;
+    display: inline-grid;
+    grid-template-columns: repeat(6, 10rem);
+    column-gap: 4rem;
+    row-gap: 2rem;
+}
+
+/* Style for Add Feedback button  */
+.add-project {
+    border: solid black 2px;
+    border-radius: 20px;
+    background-color: white;
+    width: 8.5rem;
+    height: 6.5rem;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.add-project-btn {
+    width: 4.5rem;
+    height: auto;
+}
+
+.add-project:hover {
+    background-color: #ECECEC;
+}
+
+/* Styles for login */
+.login {
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+}
+
+.login-form {
+    width: 20%;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+}
+
+.login-form button {
+    margin: 10px auto;
+    width: 4rem;
+
+}
+
+.login-form label {
+    padding-bottom: 10px;
+}
+
+.register-link {
+    padding: 0;
+}
+
+/* Styles for register page */
+.register {
+    text-align: center;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    margin: auto;
+}
+
+.register-form label {
+    padding-bottom: 10px;
+}
+
+.register-form button {
+    width: 5rem;
+    margin: 10px auto;
+}

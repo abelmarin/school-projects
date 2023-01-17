@@ -1,0 +1,125 @@
+/* Body */
+* {box-sizing: border-box;}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  background: white;
+  margin: 0;
+}
+
+/* Header */
+header {
+  background-color: #228b22;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+header h1 {
+  font-size: 40px;
+}
+
+/* Navbar */
+nav {
+  background-color: #228b22;
+  overflow: hidden;
+  position: static;
+  text-align: center;
+}
+
+nav a {
+  display: inline-block;
+  color: white;
+  padding: 15px 20px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Main page body container */
+.bod {
+  flex: 100%;
+  padding: 20px 20px;
+}
+
+.bod img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  max-width: 45%;
+  height:auto;
+}
+
+.bod h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.bod h2 {
+  text-align: center;
+  font-size: 14px;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bod p {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  font-size: 18px;
+  max-width: 680px;
+}
+
+/* Slideshow container*/
+.slideshow-container {
+  max-width: 800px;
+  position: relative;
+  margin: auto;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 20px;
+  color: white;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* Footer */
+footer {
+  padding: 30px;
+  text-align: center;
+  background: #ddd;
+  font-size: 14px;
+}
+
+footer a {
+  display: inline-block;
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+
+}
+
+@media screen and (max-width: 400px) {
+    .nav a {
+        float: none;
+        width: 100%;
+    }
+}

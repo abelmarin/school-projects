@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Visual Assignment</title>
+<link rel = "icon" type = "image/png" src="pics/african-2835156_960_720.png">
+<link rel = "apple-touch-icon" type = "image/png" src="pics/african-2835156_960_720.png"/>
+<meta charset="UTF-8">
+<meta name="author" content="Abel Marin Jr">
+<meta name="viewpoint" content="width=device-width, initial-scale=1">
+<link href="animal.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+  <header>
+    <h1>Animal Captivity</h1>
+  </header>
+
+  <nav>
+    <a href="index.html" title="Home"><i class="fa fa-home"></i></a>
+    <a href="pets.html" title="Pets">Pets</a>
+    <a href="farm.html" title="Farm Animals">Livestock</a>
+    <a href="zoo.html" title="Zoo Animals">Zoo Animals</a>
+  </nav>
+
+  <div class="bod">
+    <h1>Treatment of Pets</h1>
+    <p>Pets are animals which are kept as companions to humans. Here in the United States
+      pets are treated like children and showered with toys and affection. I can personally
+      attest to this as you can see by my spoiled pug Rosita. There is also a seemingly endless
+      amount of cat and dog pictures on the internet; all showing their love for their pets.</p>
+    <div class="slideshow-container">
+      <div class="slides">
+        <img src="pics/one.jpeg" alt="Cute Bitch">
+      </div>
+      <div class="slides">
+        <img src="pics/two.jpeg" alt="Cuter Bitch">
+      </div>
+      <div class="slides">
+        <img src="pics/three.jpeg" alt="Cutest Bitch">
+      </div>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <h2>My Pug Rosita<br>-Abel Marin</h2>
+    <p>However, pets are not treated in such a kind manner all over the world. For example,
+      in China there is the infamous Yulin Dog Meat Festival. During this festival, thousands
+      of cats and dogs are killed and eaten annually. These dogs are often slaughtered and
+      cooked in the streets of Yulin for all to see. It is important to note that this is considered
+      completely normal to the people who take part in this event. It is apart of the culture in
+      the local area. An awareness of one's own culture is always necessary when discussing a culture which is foreign to one's own.
+    </p>
+      <img src="pics/dogmeat.jpg" alt="Pig vs Dog Hypocrisy">
+      <h2>Picture curtosy of the article "Yulin Dog Meat Festival: What Is It,
+        How Did It Start and Will Activists Ever Manage to Get it Banned?" by Ravneet Ahluwalia</h2>
+  </div>
+
+  <script>
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("slides");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+  }
+  </script>
+
+  <footer>
+    <a>An Abel Marin Production</a>
+    <a href="https://depaul.digication.com/abel-marin-104-portfolio" title="Abe's Digication Portfolio" target="_blank">Digication Portfolio</a>
+  </footer>
+
+</body>
+</html>

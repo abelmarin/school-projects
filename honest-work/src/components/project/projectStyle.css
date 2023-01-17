@@ -1,0 +1,51 @@
+/* Style for Project page */
+.project-header {
+    text-align: center;
+}
+
+.project-btn-container {
+    margin: 0 auto;
+    justify-content: center;
+}
+
+/* Add task button */
+.add-task {
+    border: solid black 2px;
+    border-radius: 20px;
+    background-color: white;
+    width: 7rem;
+    height: 6.5rem;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.add-task-btn {
+    width: 4.5rem;
+    height: auto;
+}
+
+.add-task:hover {
+    background-color: #ECECEC;
+}
+
+.project-list {
+
+    /* padding: 2rem; */
+    display: inline-grid;
+    grid-template-columns: repeat(6, 10rem);
+    column-gap: 4rem;
+    row-gap: 2rem;
+}
+
+.task-component {
+
+    width: 10rem;
+    height: 8rem;
+    font-size: 1.6rem;
+    text-align: center;
+    background-color: #C4C4C4;
+    text-align: center;
+    /* justify-content: center; */
+}
+
+

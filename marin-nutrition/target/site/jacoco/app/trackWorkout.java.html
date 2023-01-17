@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TrackWorkout.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">marin-nutrition</a> &gt; <a href="index.source.html" class="el_package">app</a> &gt; <span class="el_source">TrackWorkout.java</span></div><h1>TrackWorkout.java</h1><pre class="source lang-java linenums">package app;
+
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
+import com.opencsv.exceptions.CsvException;
+import com.opencsv.exceptions.CsvValidationException;
+//import com.sun.tools.javac.util.List;
+
+import java.awt.*;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.List;
+
+<span class="fc" id="L18">public class TrackWorkout {</span>
+
+    //This file tracks the actual workouts performed by the user
+<span class="fc" id="L21">    static File trackedWorkoutsFile = new File(&quot;src/main/resources/workoutsTracked.csv&quot;);</span>
+
+    // Creates and stores a workout and whether it uses reps
+    // or if it's a timed workout
+    public void trackWorkout(String name, String workoutType, int numberOfSets, int repsOrTime) throws IOException {
+        // Checks to see if repsOrTimed is valid..
+        // Workout must be measured in either number of reps or by minutes of time.
+<span class="fc bfc" id="L28" title="All 4 branches covered.">        if (!workoutType.equals(&quot;reps&quot;) &amp;&amp; !workoutType.equals(&quot;time&quot;)) {</span>
+<span class="fc" id="L29">            throw new IllegalArgumentException(&quot;Workout must be measured in either reps or timed.&quot;);</span>
+        }
+
+<span class="fc bfc" id="L32" title="All 4 branches covered.">        if (numberOfSets == 0 || repsOrTime == 0)</span>
+<span class="fc" id="L33">            throw new IllegalArgumentException(&quot;Sets or reps/time must be greater than 0.&quot;);</span>
+
+        // Checks to see if name is valid.
+        // Cant be empty string or be longer than 100 characters
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if (name.length() == 0)</span>
+<span class="fc" id="L38">            throw new IllegalArgumentException(&quot;No name was given.&quot;);</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (name.length() &gt; 100)</span>
+<span class="fc" id="L40">            throw new IllegalArgumentException(&quot;Name is not a valid length.&quot;);</span>
+
+        try {
+<span class="fc" id="L43">            FileWriter outputFile = new FileWriter(trackedWorkoutsFile, true);</span>
+<span class="fc" id="L44">            CSVWriter writer = new CSVWriter(outputFile);</span>
+
+<span class="fc" id="L46">            String setString = Integer.toString(numberOfSets);</span>
+<span class="fc" id="L47">            String repsOrTimeString = Integer.toString(repsOrTime);</span>
+
+<span class="fc" id="L49">            String[] workoutData = {name, workoutType, setString, repsOrTimeString};</span>
+<span class="fc" id="L50">            writer.writeNext(workoutData);</span>
+
+<span class="fc" id="L52">            writer.close();</span>
+
+<span class="nc" id="L54">        } catch (IOException e) {</span>
+<span class="nc" id="L55">            System.out.println(&quot;There was an issue with recording your workout.&quot;);</span>
+<span class="fc" id="L56">        }</span>
+<span class="fc" id="L57">    }</span>
+
+    public List&lt;String[]&gt; returnTrackedWorkouts() throws IOException, CsvException {
+<span class="fc" id="L60">        CSVReader reader = new CSVReader(new FileReader(TrackWorkout.trackedWorkoutsFile));</span>
+<span class="fc" id="L61">        List&lt;String[]&gt; allRows = reader.readAll();</span>
+
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        if (allRows.size() == 0)</span>
+<span class="fc" id="L64">            throw new IllegalArgumentException(&quot;There are no recorded workouts.&quot;);</span>
+
+<span class="fc" id="L66">        return allRows;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

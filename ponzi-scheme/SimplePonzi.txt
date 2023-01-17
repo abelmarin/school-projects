@@ -1,0 +1,15 @@
+For Simple Ponzi I decided to only have one public function which a user can call.
+This function is invest and a user must send .01 ether in order to be able to call this function.
+When they have sent the ether the function then checks to see if they are already an investor.
+If so then the function will not allow them to continue on with the transaction and an error will be generated.
+This is done to simplify how payouts and investing works.
+If the user is not already an investor then they are added to the array foolishInvestors.
+Next the function payOut is called.
+This function takes 10 percent of the amount inside the contract and splits it up evenly amoung all investors in the foolishInvestors array.
+
+Example: 
+Alice calls the invest() function and sends .01 ether. She immediatly gets 10% of this back
+so the contract balance is .009 ether. Bob comes along later and also invests .01 ether.
+Both Alice and Bob spilt 10% of the contracts balance. So now the contract balance is .0171 ether.
+Next Caroline comes in and invests 1 ether. Alice, Bob, and Caroline each spilt 10% of the contracts balance.
+Now the contract balance is now .91539 ether. Diane invests 3 ether. Contract balance is now 3.523851 ether.

@@ -1,0 +1,20 @@
+ <plugin>
+  <artifactId>maven-assembly-plugin</artifactId>
+  <version>3.1.0</version>
+  <configuration>
+    <finalName>REPLACE-ME</finalName>
+    <appendAssemblyId>false</appendAssemblyId>
+    <descriptors>
+      <descriptor>src/assembly/assembly.xml</descriptor>
+    </descriptors>
+  </configuration>
+  <executions>
+    <execution>
+      <id>make-assembly</id>o
+      <phase>verify</phase> <!-- bind to the packaging phase -->
+      <goals>
+        <goal>single</goal>
+      </goals>
+    </execution>
+  </executions>
+</plugin>
